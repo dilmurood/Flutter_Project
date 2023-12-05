@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'login_screen.dart';
-import 'main_page.dart';
+import 'LoginScreen.dart';
+import 'MainScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'My App',
       home: LoginScreen(),
       routes: {
-        '/main_page': (context) => main_page(),
+        '/MainScreen': (context) => MainScreen(),
         // Other routes if any...
       },
     );

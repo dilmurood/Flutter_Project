@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'registration_screen.dart';
+import 'RegisterationScreen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key}); // make your key nonconst
@@ -68,7 +68,7 @@ class LoginScreen extends StatelessWidget {
                           fixedSize: const Size(300, 50)),
                       child: const Text('Login'),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.push(
@@ -88,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Image.asset(
-                            'images/insta.png',
+                            'images/google.png',
                             height: 100,
                             width: 100,
                           ),
