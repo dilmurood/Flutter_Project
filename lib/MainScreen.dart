@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class main_page extends StatelessWidget {
+class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Receiving arguments passed from the previous screen
@@ -15,8 +15,10 @@ class main_page extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Stored Result'),
+        title: const Text('Stored Result'),
+        backgroundColor: Colors.black38,
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -24,20 +26,33 @@ class main_page extends StatelessWidget {
           children: <Widget>[
             Text(
               'Name: $name',
-              style: TextStyle(fontSize: 18.0),
+              style: const TextStyle(fontSize: 18.0),
             ),
             Text(
               'Email: $email',
-              style: TextStyle(fontSize: 18.0),
+              style: const TextStyle(fontSize: 18.0),
             ),
             Text(
               'Phone: $phone',
-              style: TextStyle(fontSize: 18.0),
+              style: const TextStyle(fontSize: 18.0),
             ),
             Text(
               'Address: $address',
-              style: TextStyle(fontSize: 18.0),
+              style: const TextStyle(fontSize: 18.0),
             ),
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Image.asset(
+                    'images/human.png',
+                    height: 400,
+                    width: 400,
+                  ),
+                ],
+              ),
+            ),
+
             // Any additional widgets or logic using this data can be placed here
           ],
         ),

@@ -18,6 +18,7 @@ class RegistrationScreen extends StatelessWidget {
         backgroundColor: Colors.black38,
         title: const Text("Registration Screen"),
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -98,7 +99,7 @@ class RegistrationScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
-                    '/main_page',
+                    '/MainScreen',
                     arguments: {
                       'name': _nameController.text,
                       'email': _emailController.text,
