@@ -22,13 +22,7 @@ flutter:
 
 
   uses-material-design: true
-  
-  fonts: 
-    - family: Raleway
-      fonts:
-        - asset: fonts/Raleway-Regular.ttf
-        - asset: fonts/Raleway-Italic.ttf
-          style: italic
+
 
   assets:
     - images/google.png
