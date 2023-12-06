@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/AddItemShow.dart';
+import 'package:flutter_project/ProfileScreen.dart';
 import 'MainScreen.dart';
-import 'AddItem.dart';
-import 'AddItemShow.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,9 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My App',
-      home: AddItem(),
+      home: ProfileScreen(),
       routes: {
-        '/AddItemShow' : (context) => AddItemShow(),
+        '/ProfileScreen' : (context) => ProfileScreen(),
         // Other routes if any...
       },
     );
