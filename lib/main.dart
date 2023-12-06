@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'LoginScreen.dart';
+import 'package:flutter_project/AddItemShow.dart';
 import 'MainScreen.dart';
+import 'AddItem.dart';
+import 'AddItemShow.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,9 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My App',
-      home: LoginScreen(),
+      home: AddItem(),
       routes: {
-        '/MainScreen': (context) => MainScreen(),
+        '/AddItemShow' : (context) => AddItemShow(),
         // Other routes if any...
       },
     );
