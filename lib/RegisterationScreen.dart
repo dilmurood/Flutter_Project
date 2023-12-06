@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class RegistrationScreen extends StatelessWidget {
@@ -89,7 +91,7 @@ class RegistrationScreen extends StatelessWidget {
                 labelText: 'Enter your address',
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -108,8 +110,6 @@ class RegistrationScreen extends StatelessWidget {
                     },
                   );
 
-                  //TODO: Write the logic to handle registration
-                  //TODO: only pass Name, Email, Phone and adress to the next screen!
                 },
               ),
             ),
