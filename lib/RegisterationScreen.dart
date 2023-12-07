@@ -31,7 +31,7 @@ class RegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.tealAccent,
       appBar: AppBar(
         backgroundColor: Colors.black38,
         title: const Text(

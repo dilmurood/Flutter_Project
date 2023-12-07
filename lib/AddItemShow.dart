@@ -15,7 +15,7 @@ class AddItemShow extends StatelessWidget{
     final String price = args['price'];
 
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.tealAccent,
       appBar: AppBar(
         title: const Text('Added Product Info'),
         backgroundColor: Colors.black38,
