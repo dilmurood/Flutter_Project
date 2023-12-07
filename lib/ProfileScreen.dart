@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/LoginScreen.dart';
 
 class ProfileScreen extends StatelessWidget {
-  
   const ProfileScreen({super.key});
 
   void _changeScreen(BuildContext context) {
@@ -13,11 +12,11 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        // Receiving arguments passed from the previous screen
+    // Receiving arguments passed from the previous screen
     final Map<String, dynamic> args =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
 
-   // Retrieving data from arguments
+    // Retrieving data from arguments
     final String name = args['name'];
     final String email = args['email'];
     final String phone = args['phone'];
@@ -27,14 +26,14 @@ class ProfileScreen extends StatelessWidget {
       backgroundColor: Colors.tealAccent,
       body: Center(
           child: Column(children: <Widget>[
-        const Expanded(
+            const Expanded(
             child: CircleAvatar(
-          radius: 150,
-          backgroundImage: AssetImage('images/ava.png'),
+              radius: 150,
+              backgroundImage: AssetImage('images/ava.png'),
         )),
         Text(
           name,
-          style: TextStyle(color: Colors.white, fontSize: 25),
+          style: const TextStyle(color: Colors.white, fontSize: 25),
         ),
         const Text(
           "user",

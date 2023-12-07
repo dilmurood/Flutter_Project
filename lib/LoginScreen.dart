@@ -1,6 +1,5 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
-import 'package:flutter_project/ProfileScreen.dart';
 import 'RegisterationScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
