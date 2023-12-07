@@ -1,4 +1,4 @@
-// ignore: file_names 
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_project/ProfileScreen.dart';
 import 'RegisterationScreen.dart';
@@ -13,9 +13,7 @@ class LoginScreen extends StatelessWidget {
   void _register(BuildContext context) {
     Navigator.push(
         context, //
-        MaterialPageRoute(
-            builder: (context) =>
-                RegistrationScreen()));
+        MaterialPageRoute(builder: (context) => RegistrationScreen()));
   }
 
   @override
@@ -54,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     TextField(
-                        mouseCursor: MaterialStateMouseCursor.clickable,
+                      mouseCursor: MaterialStateMouseCursor.clickable,
                       controller: _usernameController,
                       decoration: const InputDecoration(
                           labelText: 'Username', border: OutlineInputBorder()),
@@ -71,7 +69,7 @@ class LoginScreen extends StatelessWidget {
                         Navigator.push(
                             context, //
                             MaterialPageRoute(
-                                builder: (context) => ProfileScreen()));
+                                builder: (context) => RegistrationScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.black,
@@ -96,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 25),
                     Center(
-                      child: Row(
+                      child:  Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           GestureDetector(
