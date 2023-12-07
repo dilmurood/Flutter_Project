@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AddItemShow extends StatelessWidget{
+  const AddItemShow({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Receiving arguments passed from the previous screen
@@ -13,6 +15,7 @@ class AddItemShow extends StatelessWidget{
     final String price = args['price'];
 
     return Scaffold(
+      backgroundColor: Colors.teal,
       appBar: AppBar(
         title: const Text('Added Product Info'),
         backgroundColor: Colors.black38,
@@ -33,6 +36,10 @@ class AddItemShow extends StatelessWidget{
             ),
             Text(
               'Price: $price',
+              style: const TextStyle(fontSize: 18.0),
+            ),
+            Text(
+              'Info: $price',
               style: const TextStyle(fontSize: 18.0),
             ),
             

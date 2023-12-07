@@ -5,91 +5,116 @@ class AddItem extends StatelessWidget {
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _priceController = TextEditingController();
 
+  AddItem({super.key});
+
+  void _changeScreen(BuildContext context) {
+    Navigator.pushNamed(
+      context,
+      '/AddItemShow',
+      arguments: {
+        'name': _nameController.text,
+        'id': _idController.text,
+        'price': _priceController.text,
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black38,
       appBar: AppBar(
-        title: const Text("Add Items",
-        textAlign: TextAlign.center,),
-        backgroundColor: Colors.black38,
+        title: const Text(
+          "Add Items",
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: Color.fromARGB(255, 25, 80, 57),
         titleTextStyle: const TextStyle(color: Colors.amber),
       ),
       body: Container(
         padding: const EdgeInsets.all(20),
-        color: Colors.white,
-        child:  Column(
+        color: Colors.teal,
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-             const Text(
+            const Text(
               "Product name:",
               style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextField(
+              mouseCursor: MaterialStateMouseCursor.clickable,
+              controller: _nameController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "product name",
               ),
-              const SizedBox(height: 20,),
-              TextField(
-                controller: _nameController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "product name"
-                ),               
-              ),
-
-              const SizedBox(height: 10,),
-
-              const Text(
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
               "Product ID:",
               style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 20,),
-              TextField(
-                controller: _idController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "product id"
-                ),
-              ),
-              const SizedBox(height: 10,),
-
-               const Text(
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextField(
+              mouseCursor: MaterialStateMouseCursor.clickable,
+              controller: _idController,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(), labelText: "product id"),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
               "Product Price:",
               style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 20,),
-              TextField(
-                controller: _priceController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "product price"
-                ),
-              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextField(
+              mouseCursor: MaterialStateMouseCursor.clickable,
+              controller: _priceController,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(), labelText: "product price"),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              "Product info:",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextField(
+              mouseCursor: MaterialStateMouseCursor.clickable,
+              controller: _priceController,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(), labelText: "product ifno"),
+            ),
             const SizedBox(height: 20),
             SafeArea(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     fixedSize: const Size(100, 50)),
-                child: const Text('Add'),
+                child: const Text(
+                  'Add',
+                  style: TextStyle(color: Colors.white),
+                ),
                 onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/AddItemShow',
-                    arguments: {
-                      'name': _nameController.text,
-                      'id': _idController.text,
-                      'price': _priceController.text,
-                    },
-                  );
-
+                  _changeScreen(context);
                 },
               ),
             ),
-              
-           ],
+          ],
         ),
       ),
-      
     );
-
   }
 }
