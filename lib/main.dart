@@ -3,7 +3,6 @@ import 'package:flutter_project/AddItem.dart';
 import 'package:flutter_project/AddItemShow.dart';
 import 'package:flutter_project/LoginScreen.dart';
 import 'package:flutter_project/ProfileScreen.dart';
-import 'MainScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,10 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My App',
-      home: AddItem(),
+      home: LoginScreen(),
       routes: {
-        '/ProfileScreen': (context) => ProfileScreen(),
-        '/AddItemShow': (context) => AddItemShow(),
+        '/ProfileScreen': (context) => const ProfileScreen(),
+        '/AddItemShow': (context) => const AddItemShow(),
 
         // Other routes if any...
       },
