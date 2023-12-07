@@ -24,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
     final String address = args['address'];
 
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.tealAccent,
       body: Center(
           child: Column(children: <Widget>[
         const Expanded(
