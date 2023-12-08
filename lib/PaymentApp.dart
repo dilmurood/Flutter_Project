@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/LoginScreen.dart';
+import 'package:flutter_project/MainPage.dart';
 
 class PaymentApp extends StatelessWidget {
   const PaymentApp({super.key});
 
   void _makeDelivery(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        context, MaterialPageRoute(builder: (context) => MainPage()));
   }
 
   @override
