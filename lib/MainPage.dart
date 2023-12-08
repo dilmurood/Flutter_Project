@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/Cart.dart';
+import 'package:flutter_project/ProductDetails.dart';
 
 void _buyPressed(BuildContext context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => Cart()));
-  }
+  Navigator.push(context, MaterialPageRoute(builder: (context) => Cart()));
+}
 
 class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,52 +22,53 @@ class MainPage extends StatelessWidget {
       ),
       backgroundColor: Colors.tealAccent,
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Recommendations',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
-          
-
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Search and Filters',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
-          // Add search and filter widgets here
-
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Categories',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
-          // Add category buttons or a drawer for navigation
-
-          // Example product grid for electronics
-          Expanded(
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8,
+          const Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  'Recommendations',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
               ),
-              itemCount: 4, // Replace with the actual number of products
+              Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  'Search and Filters',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  'Categories',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          ),
+          Expanded(
+            
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1,
+                //crossAxisSpacing: 25,
+                mainAxisSpacing: 10,
+                mainAxisExtent: 250,
+              ),
+              itemCount: 16,
               itemBuilder: (context, index) {
-                // Replace the following with your product widget
                 return Card(
+                  color: Colors.black12,
                   child: ListTile(
                     title: Text('Product $index'),
-                    subtitle: Text('Price: \$20'),
+                    subtitle: const Text('Price: \$20'),
                     onTap: () {
-                      // Handle product tap
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails()));
                     },
                   ),
                 );
@@ -75,13 +78,11 @@ class MainPage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          
-          _buyPressed(context) ;
+        onPressed: () {
+          _buyPressed(context);
         },
-        child: Icon(Icons.shopping_cart),
+        child: const Icon(Icons.shopping_cart),
       ),
     );
   }
 }
-

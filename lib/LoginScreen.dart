@@ -96,14 +96,18 @@ class LoginScreen extends StatelessWidget {
                       child:  Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          GestureDetector(
-                            onTap: _launchURL,
-                            child: Image.asset(
-                              'images/google.png',
-                              height: 100,
-                              width: 100,
-                            ),
-                          ),
+                          MouseRegion(
+  cursor: SystemMouseCursors.click, // Set the cursor to indicate click
+  child: GestureDetector(
+    onTap: _launchURL,
+    child: Image.asset(
+      'images/google.png',
+      height: 100,
+      width: 100,
+    ),
+  ),
+),
+
                           Image.asset(
                             'images/meta.png',
                             height: 100,
