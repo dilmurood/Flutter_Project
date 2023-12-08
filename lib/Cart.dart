@@ -19,7 +19,7 @@ class _CartState extends State<Cart> {
   void _decrement() {
     setState(() {
       if (num > 0) {
-      num--;
+        num--;
       }
     });
   }
@@ -44,7 +44,7 @@ class _CartState extends State<Cart> {
       backgroundColor: Colors.tealAccent,
       body: Center(
           child: Column(
-          children: <Widget>[
+        children: <Widget>[
           const SizedBox(
             height: 25,
           ),
@@ -152,13 +152,14 @@ class _CartState extends State<Cart> {
               Text('$num'),
             ]),
           ),
-          const SizedBox(
-            height: 25,
-          ),
           Container(
-            color: Colors.white,
             margin: const EdgeInsets.all(20),
             padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(width: 3, color: Colors.red), 
+              color: Colors.white,
+),
             child: Row(children: <Widget>[
               Text(
                   "Total number of products: $numberOfProducts \nTotal cost: $totalCost")
