@@ -3,6 +3,7 @@ import 'package:flutter_project/AddItem.dart';
 import 'package:flutter_project/AddItemShow.dart';
 import 'package:flutter_project/Cart.dart';
 import 'package:flutter_project/LoginScreen.dart';
+import 'package:flutter_project/PaymentApp.dart';
 import 'package:flutter_project/ProfileScreen.dart';
 import 'package:flutter_project/RegisterationScreen.dart';
 import 'package:flutter_project/MainPage.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My App',
-      home: MainPage(),
+
       routes: {
         '/ProfileScreen': (context) => const ProfileScreen(),
         '/AddItemShow': (context) => const AddItemShow(),
