@@ -89,7 +89,7 @@ class RegistrationScreen extends StatelessWidget {
               ),
             ),
             const Text(
-              'Phone',
+              'Phone number: ',
               style: TextStyle(fontSize: 16.0),
             ),
             const SizedBox(height: 16.0),

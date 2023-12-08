@@ -4,6 +4,7 @@ class AddItem extends StatelessWidget {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _priceController = TextEditingController();
+  final TextEditingController _infoController = TextEditingController();
 
   AddItem({super.key});
 
@@ -15,6 +16,7 @@ class AddItem extends StatelessWidget {
         'name': _nameController.text,
         'id': _idController.text,
         'price': _priceController.text,
+        'info': _infoController.text
       },
     );
   }
@@ -27,12 +29,12 @@ class AddItem extends StatelessWidget {
           "Add Items",
           textAlign: TextAlign.center,
         ),
-        backgroundColor: Color.fromARGB(255, 25, 80, 57),
+        backgroundColor: Colors.teal,
         titleTextStyle: const TextStyle(color: Colors.amber),
       ),
       body: Container(
         padding: const EdgeInsets.all(20),
-        color: Colors.teal,
+        color: Colors.tealAccent,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -81,7 +83,7 @@ class AddItem extends StatelessWidget {
               mouseCursor: MaterialStateMouseCursor.clickable,
               controller: _priceController,
               decoration: const InputDecoration(
-                  border: OutlineInputBorder(), labelText: "product price"),
+                  border: OutlineInputBorder(), labelText: "product price(\$)"),
             ),
             const SizedBox(height: 20),
             const Text(
@@ -93,7 +95,7 @@ class AddItem extends StatelessWidget {
             ),
             TextField(
               mouseCursor: MaterialStateMouseCursor.clickable,
-              controller: _priceController,
+              controller: _infoController,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(), labelText: "product ifno"),
             ),

@@ -1,16 +1,81 @@
 # flutter_project
 
 A new Flutter project.
+simple e commerce application (like Uzum).
 
-## Getting Started
+Pages:
+    -Login
+        users just enters USERNAME and PASSWORD, and 
+        available options to log in:
+            -google
+            -meta(need to change to something else)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+    -Register
+        required fields:
+            -full name
+            -email
+            -phone number
+            -address
+            -password....
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    -Main
+        when users enters application main page pops up and 
+            shows recomendations:
+                -most purchased apps
+                -biggest discounts
+        in this page a user can search for a random item, filter according to date, price, and 
+        catalog:
+
+            -elctronics:
+                -smart phones
+                -laptops
+                -pcs
+                -tvs
+                -watches
+                -gadgets...
+
+            -clothes:
+                -womens' clothes
+                -mens' clothes
+                -children
+
+            -shoes,
+            -
+        users add products to their cart.
+
+
+    -Profile
+        user info:
+            -avatar,
+            -full name,
+            -phone number,
+            -address,
+            -email,
+            log out
+
+
+    -Cart
+        shows products users are going to buy.
+        displays: 
+            -saved products
+            -number of products
+            -total cost
+
+        when buy button is clicked, if user is not registered yet, register page pops up, if user has already registered then final pages opens up requiring:
+            -address(where to deliver),
+            -payment method:
+                -credit card
+                -cash
+            -promocode (if available)
+        after that delivering time is display, everybody happy!!.
+
+
+    -wishlist   
+        users saves(likes) their products they want to buy in future.
+
+
+    -AddItem:
+        For business ownwers to add their product.
+    -
