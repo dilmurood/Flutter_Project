@@ -1,13 +1,17 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/PaymentMethod.dart';
+import 'package:flutter_project/RegisterationScreen.dart';
 
 class Cart extends StatelessWidget {
+  final double totalCost = 0.0;
+  final int numberOfProducts = 0;
+
   const Cart({super.key});
+
 
   void _buyPressed(BuildContext context) {
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const PaymentMethod()));
+        MaterialPageRoute(builder: (context) => RegistrationScreen()));
   }
 
   @override
@@ -79,8 +83,33 @@ class Cart extends StatelessWidget {
               ElevatedButton(onPressed: () {}, child: const Text("-")),
             ]),
           ),
+          Container(
+            height: 100,
+            width: 400,
+            color: Colors.cyanAccent,
+            child: Row(children: <Widget>[
+              const Icon(
+                Icons.no_sim,
+                size: 100,
+              ),
+              const Text("Some text about product."),
+              const SizedBox(
+                width: 20,
+              ),
+              ElevatedButton(onPressed: () {}, child: const Text("+")),
+              ElevatedButton(onPressed: () {}, child: const Text("-")),
+            ]),
+          ),
           const SizedBox(
             height: 25,
+          ),
+          Container(
+            color: Colors.white,
+            margin: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
+            child: Row(children: <Widget>[
+               Text("Total number of products: $numberOfProducts \nTotal cost: $totalCost")
+            ]),
           ),
           ElevatedButton(
               onPressed: () {

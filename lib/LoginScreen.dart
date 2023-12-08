@@ -12,7 +12,7 @@ class LoginScreen extends StatelessWidget {
   void _register(BuildContext context) {
     Navigator.push(
         context, //
-        MaterialPageRoute(builder: (context) => RegistrationScreen()));
+        MaterialPageRoute(builder: (_) => RegistrationScreen()));
   }
 
   @override

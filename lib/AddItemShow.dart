@@ -13,6 +13,7 @@ class AddItemShow extends StatelessWidget{
     final String name = args['name'];
     final String id = args['id'];
     final String price = args['price'];
+    final String info = args['info'];
 
     return Scaffold(
       backgroundColor: Colors.tealAccent,
@@ -39,10 +40,9 @@ class AddItemShow extends StatelessWidget{
               style: const TextStyle(fontSize: 18.0),
             ),
             Text(
-              'Info: $price',
+              'Info: $info',
               style: const TextStyle(fontSize: 18.0),
             ),
-            
             const Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
