@@ -23,28 +23,25 @@ Pages:
     -Main
         when users enters application main page pops up and 
             shows recomendations:
-                -most purchased apps
+                -most purchased products
                 -biggest discounts
         in this page a user can search for a random item, filter according to date, price, and 
         catalog:
-
-            -elctronics:
                 -smart phones
+                    -apple
+                    -samsung
+                    -redmi
                 -laptops
                 -pcs
-                -tvs
-                -watches
+                -smart watches
                 -gadgets...
 
-            -clothes:
-                -womens' clothes
-                -mens' clothes
-                -children
+                users add products to their cart.
 
-            -shoes,
-            -
-        users add products to their cart.
-
+    
+    -ProductDetails
+        shows product details like available colors, price, ratings, characteristics and comments
+        add to the cart button
 
     -Profile
         user info:
@@ -63,7 +60,8 @@ Pages:
             -number of products
             -total cost
 
-        when buy button is clicked, if user is not registered yet, register page pops up, if user has already registered then final pages opens up requiring:
+        when buy button is clicked, if user is not registered yet, register page pops up, if user has already registered then final page opens up requiring:
+    -done
             -address(where to deliver),
             -payment method:
                 -credit card
