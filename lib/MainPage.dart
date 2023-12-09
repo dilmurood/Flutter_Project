@@ -1,17 +1,20 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_project/Cart.dart';
 import 'package:flutter_project/ProductDetails.dart';
 
-void _buyPressed(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) => Cart()));
-}
-
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
+  void _buyPressed(BuildContext context) {
+    Navigator.pushNamed(context, '/Cart');
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+        home: Scaffold(
       appBar: AppBar(
         title: const Text(
           "Main Page",
@@ -49,7 +52,6 @@ class MainPage extends StatelessWidget {
             ],
           ),
           Expanded(
-            
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
@@ -60,8 +62,9 @@ class MainPage extends StatelessWidget {
               itemCount: 16,
               itemBuilder: (context, index) {
                 return Card(
-                  color: Colors.black12,
+                  color: Colors.white,
                   child: ListTile(
+                    hoverColor: const Color.fromARGB(255, 207, 205, 205),
                     title: Text('Product $index'),
                     subtitle: const Text('Price: \$20'),
                     onTap: () {
@@ -81,8 +84,37 @@ class MainPage extends StatelessWidget {
         onPressed: () {
           _buyPressed(context);
         },
-        child: const Icon(Icons.shopping_cart),
+        backgroundColor: Colors.teal,
+        hoverColor: Colors.tealAccent,
+        child: const Icon(
+          Icons.shopping_cart,
+          size: 30,
+        ),
       ),
-    );
+      bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.tealAccent,
+          selectedFontSize: 16,
+          backgroundColor: Colors.teal,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home_sharp,
+                  size: 30,
+                ),
+                label: 'Main'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.filter_alt,
+                  size: 30,
+                ),
+                label: 'Filter'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                  size: 30,
+                ),
+                label: 'Profile'),
+          ]),
+    ));
   }
 }

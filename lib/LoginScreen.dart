@@ -10,9 +10,8 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
   void _register(BuildContext context) {
-    Navigator.push(
-        context, //
-        MaterialPageRoute(builder: (_) => RegistrationScreen()));
+    Navigator.pushNamed(
+        context, '/RegisterationScreen');
   }
 
   @override

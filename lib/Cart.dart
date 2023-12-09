@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/PaymentApp.dart';
 
 class Cart extends StatefulWidget {
+  // final String productName;
+
+  // const Cart({super.key, required this.productName});
+
   @override
   _CartState createState() => _CartState();
 }
@@ -10,13 +14,13 @@ class _CartState extends State<Cart> {
   final double totalCost = 0.0;
   final int numberOfProducts = 0;
   int num = 0;
-  void _increment() {
+  void _increment(int val) {
     setState(() {
       num++;
     });
   }
 
-  void _decrement() {
+  void _decrement(int val) {
     setState(() {
       if (num > 0) {
         num--;
@@ -25,8 +29,8 @@ class _CartState extends State<Cart> {
   }
 
   void _buyPressed(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => PaymentApp()));
+    Navigator.pushNamed(
+        context, '/PaymentApp');
   }
 
   @override
@@ -170,11 +174,13 @@ class _CartState extends State<Cart> {
                 _buyPressed(context);
               },
               style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
                   fixedSize: Size(
                     size.width * 0.7,
                     size.height * 0.05,
                   ),
                   shadowColor: Colors.red),
+                  
               child: const Text("BUY"))
         ],
       )),
