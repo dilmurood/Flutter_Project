@@ -14,12 +14,14 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Main Page",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
+      home: DefaultTabController(
+        length: 4,
+        child: Scaffold(
+          appBar: AppBar(
+          title: const Text(
+            "Main Page",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
         backgroundColor: Colors.teal,
         leading: const Icon(Icons.home),
       ),
@@ -91,30 +93,14 @@ class MainPage extends StatelessWidget {
           size: 30,
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Colors.tealAccent,
-          selectedFontSize: 16,
-          backgroundColor: Colors.teal,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_sharp,
-                  size: 30,
-                ),
-                label: 'Main'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.filter_alt,
-                  size: 30,
-                ),
-                label: 'Filter'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person,
-                  size: 30,
-                ),
-                label: 'Profile'),
-          ]),
-    ));
+      bottomSheet:  const TabBar(
+          tabs: [
+            Tab(icon: Icon(Icons.home_sharp, size: 30,), text: 'Main'),
+            Tab(icon: Icon(Icons.filter_alt, size: 30,), text: 'Filter',),
+            Tab(icon: Icon(Icons.person, size: 30,), text: 'Profile',),
+            Tab(icon: Icon(Icons.shopping_cart, size: 30,), text: 'Cart',),
+          ],          ),
+    ),)
+    );
   }
 }

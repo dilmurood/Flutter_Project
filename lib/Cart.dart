@@ -14,13 +14,13 @@ class _CartState extends State<Cart> {
   final double totalCost = 0.0;
   final int numberOfProducts = 0;
   int num = 0;
-  void _increment(int val) {
+  void _increment() {
     setState(() {
       num++;
     });
   }
 
-  void _decrement(int val) {
+  void _decrement() {
     setState(() {
       if (num > 0) {
         num--;
