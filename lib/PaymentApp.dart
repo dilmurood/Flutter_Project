@@ -5,8 +5,8 @@ class PaymentApp extends StatelessWidget {
   const PaymentApp({super.key});
 
   void _makeDelivery(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => MainPage()));
+    Navigator.pushNamed(
+        context, '/MainPage');
   }
 
   @override
@@ -19,7 +19,7 @@ class PaymentApp extends StatelessWidget {
           backgroundColor: Colors.teal,
           title: const Text('Payment'),
         ),
-        body:  Center(
+        body: Center(
           child: Column(
             children: <Widget>[
               const Padding(
@@ -43,13 +43,15 @@ class PaymentApp extends StatelessWidget {
                 ),
               ),
               const Payment(),
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               ElevatedButton(
                   onPressed: () {
                     _makeDelivery(context);
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
+                      backgroundColor: Colors.black,
                       fixedSize: Size(
                         size.width * 0.7,
                         size.height * 0.05,
@@ -87,14 +89,12 @@ class _Payment extends State<Payment> {
           width: 20,
         ),
         Checkbox(
-            tristate: true,
-            value: true,
-            isError: true,
-            onChanged: (bool? value) {
-              setState(() {
-                isChecked = value;
-              });
-            })
+          value: isChecked,
+          onChanged: (bool? value) {
+            setState(() {
+              isChecked = value ?? false;
+            });
+          },)
       ],
     );
   }

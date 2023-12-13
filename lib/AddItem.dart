@@ -9,9 +9,9 @@ class AddItem extends StatelessWidget {
   AddItem({super.key});
 
   void _changeScreen(BuildContext context) {
+    
     Navigator.pushNamed(
-      context,
-      '/AddItemShow',
+      context, '/AddItemShow',
       arguments: {
         'name': _nameController.text,
         'id': _idController.text,
