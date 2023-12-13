@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My App',
-      home: Cart(),
+      home: MainPage(),
       routes: {
         '/ProfileScreen': (context) => const ProfileScreen(),
         '/AddItemShow': (context) => const AddItemShow(),
