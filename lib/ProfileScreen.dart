@@ -5,9 +5,8 @@ class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   void _changeScreen(BuildContext context) {
-    Navigator.push(
-        context, //
-        MaterialPageRoute(builder: (context) => LoginScreen()));
+    Navigator.pushNamed(
+        context, '/LoginScreen');
   }
 
   @override

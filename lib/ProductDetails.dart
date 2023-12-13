@@ -5,7 +5,7 @@ class ProductDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Text(
-        'Not ready',
+        'Not implemented',
         style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
       ),
     );
