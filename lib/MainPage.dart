@@ -13,8 +13,8 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
+    return Scaffold(
+      body: DefaultTabController(
         length: 4,
         child: Scaffold(
           appBar: AppBar(
@@ -22,10 +22,10 @@ class MainPage extends StatelessWidget {
             "Main Page",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.black38,
         leading: const Icon(Icons.home),
       ),
-      backgroundColor: Colors.tealAccent,
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           const Row(
@@ -64,7 +64,7 @@ class MainPage extends StatelessWidget {
               itemCount: 16,
               itemBuilder: (context, index) {
                 return Card(
-                  color: Colors.white,
+                  color: Colors.white12,
                   child: ListTile(
                     hoverColor: const Color.fromARGB(255, 207, 205, 205),
                     title: Text('Product $index'),
@@ -99,7 +99,8 @@ class MainPage extends StatelessWidget {
             Tab(icon: Icon(Icons.filter_alt, size: 30,), text: 'Filter',),
             Tab(icon: Icon(Icons.person, size: 30,), text: 'Profile',),
             Tab(icon: Icon(Icons.shopping_cart, size: 30,), text: 'Cart',),
-          ],          ),
+          ],  
+      ),
     ),)
     );
   }

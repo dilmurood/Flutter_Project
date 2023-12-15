@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.tealAccent,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -33,8 +33,8 @@ class LoginScreen extends StatelessWidget {
                   Text(
                     'PLEASE, LOG IN',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
+                      color: Colors.black,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -42,7 +42,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
             Expanded(
               child: Padding(
@@ -57,6 +57,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     const TextField(
+                      obscureText: true,
                       mouseCursor: MaterialStateMouseCursor.clickable,
                       decoration: InputDecoration(
                           labelText: 'Password', border: OutlineInputBorder()),
@@ -86,7 +87,7 @@ class LoginScreen extends StatelessWidget {
                           backgroundColor: Colors.black,
                           fixedSize: const Size(300, 50)),
                       child: const Text(
-                        'Register',
+                        'Sign Up',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -96,17 +97,16 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           MouseRegion(
-  cursor: SystemMouseCursors.click, // Set the cursor to indicate click
-  child: GestureDetector(
-    onTap: _launchURL,
-    child: Image.asset(
-      'images/google.png',
-      height: 100,
-      width: 100,
-    ),
-  ),
-),
-
+                            cursor: SystemMouseCursors.click, // Set the cursor to indicate click
+                            child: GestureDetector(
+                            onTap: _launchURL,
+                            child: Image.asset(
+                              'images/google.png',
+                              height: 100,
+                              width: 100,
+                              ),
+                            ),
+                          ),
                           Image.asset(
                             'images/meta.png',
                             height: 100,

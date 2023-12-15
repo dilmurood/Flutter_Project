@@ -12,13 +12,12 @@ class PaymentApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.tealAccent,
+    return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.teal,
+          backgroundColor: Colors.white38,
           title: const Text('Payment'),
         ),
+        backgroundColor: Colors.white,
         body: Center(
           child: Column(
             children: <Widget>[
@@ -28,7 +27,7 @@ class PaymentApp extends StatelessWidget {
                   mouseCursor: MaterialStateMouseCursor.clickable,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'where to deliver',
+                    labelText: 'Address',
                   ),
                 ),
               ),
@@ -47,21 +46,17 @@ class PaymentApp extends StatelessWidget {
                 height: 20,
               ),
               ElevatedButton(
-                  onPressed: () {
-                    _makeDelivery(context);
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      fixedSize: Size(
-                        size.width * 0.7,
-                        size.height * 0.05,
-                      ),
-                      shadowColor: Colors.red),
-                  child: const Text("Deliver"))
-            ],
+                onPressed: () {
+                  _makeDelivery(context);
+                },
+                style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black),
+                child: const Text("Deliver")
+              )
+            ]
+            
           ),
         ),
-      ),
     );
   }
 }

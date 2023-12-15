@@ -21,18 +21,18 @@ class ProfileScreen extends StatelessWidget {
     final String phone = args['phone'];
     final String address = args['address'];
 
-    return Scaffold(
-      backgroundColor: Colors.tealAccent,
-      body: Center(
+    return MaterialApp(
+      home: Center(
           child: Column(children: <Widget>[
             const Expanded(
-            child: CircleAvatar(
-              radius: 150,
-              backgroundImage: AssetImage('images/ava.png'),
-        )),
+              child: CircleAvatar(
+                radius: 120,
+                backgroundImage: AssetImage('images/ava.png'),
+              )
+            ),
         Text(
           name,
-          style: const TextStyle(color: Colors.white, fontSize: 25),
+          style: const TextStyle(color: Colors.black, fontSize: 25),
         ),
         const Text(
           "user",
@@ -45,7 +45,7 @@ class ProfileScreen extends StatelessWidget {
           child: Divider(color: Colors.black),
         ),
         Card(
-          color: Colors.white,
+          color: Colors.white24,
           margin: EdgeInsets.all(20),
           child: Padding(
             padding: EdgeInsets.all(16),
@@ -64,8 +64,8 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
         Card(
-          color: Colors.white,
-          margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+          color: Colors.white24,
+          margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
           child: Padding(
             padding: EdgeInsets.all(16),
             child: Row(
@@ -85,7 +85,7 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
         Card(
-          color: Colors.white,
+          color: Colors.white24,
           margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
           child: Padding(
             padding: EdgeInsets.all(16),
@@ -105,13 +105,13 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
         ),
-        Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
           IconButton(
             onPressed: () {
               _changeScreen(context);
             },
             style: IconButton.styleFrom(
-                backgroundColor: Colors.redAccent,
+                backgroundColor: Colors.red,
                 fixedSize: const Size(150, 50)),
             icon: const Icon(Icons.logout),
           ),

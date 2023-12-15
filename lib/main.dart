@@ -8,11 +8,19 @@ import 'package:flutter_project/PaymentApp.dart';
 import 'package:flutter_project/ProfileScreen.dart';
 import 'package:flutter_project/RegisterationScreen.dart';
 import 'package:flutter_project/MainPage.dart';
+import 'package:flutter_project/Welcome.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+int? isViewed;
+void main() async {
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  isViewed = pref.getInt('Welcome');
+
   //screen does not rotate, it is fixed
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+
   runApp(const MyApp());
 }
 
@@ -22,10 +30,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'My App',
-      home: MainPage(),
+      home: isViewed != 0 ? const Welcome() : LoginScreen(),
       routes: {
-        '/PaymentApp' :(context) => const PaymentApp(),
+        '/PaymentApp': (context) => const PaymentApp(),
         '/ProfileScreen': (context) => const ProfileScreen(),
         '/AddItemShow': (context) => const AddItemShow(),
         '/RegisterationScreen': (context) => RegistrationScreen(),
