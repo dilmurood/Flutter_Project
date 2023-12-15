@@ -31,11 +31,11 @@ class RegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.tealAccent,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.black38,
         title: const Text(
-          "Registration.",
+          "Sign Up",
           style: TextStyle(color: Colors.white),
         ),
       ),
@@ -44,11 +44,6 @@ class RegistrationScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const Text(
-              'Please fill the form!!',
-              style: TextStyle(fontSize: 24.0, color: Colors.white),
-            ),
-            const SizedBox(height: 8.0),
             const Text(
               'Full Name',
               style: TextStyle(fontSize: 16.0),
@@ -61,9 +56,10 @@ class RegistrationScreen extends StatelessWidget {
                 border: OutlineInputBorder(),
                 labelText: 'Enter your name',
               ),
+              
             ),
             const Text(
-              'email',
+              'Email',
               style: TextStyle(fontSize: 16.0),
             ),
             const SizedBox(height: 16.0),
@@ -76,7 +72,7 @@ class RegistrationScreen extends StatelessWidget {
               ),
             ),
             const Text(
-              'password',
+              'Password',
               style: TextStyle(fontSize: 16.0),
             ),
             const SizedBox(height: 16.0),
@@ -89,7 +85,7 @@ class RegistrationScreen extends StatelessWidget {
               ),
             ),
             const Text(
-              'Phone number: ',
+              'Phone Number ',
               style: TextStyle(fontSize: 16.0),
             ),
             const SizedBox(height: 16.0),

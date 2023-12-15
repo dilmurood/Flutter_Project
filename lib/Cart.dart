@@ -11,178 +11,74 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   final double totalCost = 0.0;
-  final int numberOfProducts = 0;
-  int num = 0;
+  int quantity = 0;
   void _increment() {
     setState(() {
-      num++;
+      quantity++;
     });
   }
 
   void _decrement() {
     setState(() {
-      if (num > 0) {
-        num--;
+      if (quantity > 0) {
+        quantity--;
       }
     });
   }
 
   void _buyPressed(BuildContext context) {
-    Navigator.pushNamed(
-        context, '/PaymentApp');
+    Navigator.pushNamed(context, '/PaymentApp');
   }
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           "CART",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.black38,
         leading: const Icon(Icons.shopping_cart),
       ),
-      backgroundColor: Colors.tealAccent,
+      backgroundColor: Colors.white,
       body: Center(
-          child: Column(
-        children: <Widget>[
-          const SizedBox(
-            height: 25,
-          ),
-          Container(
-            height: size.height * 0.15,
-            width: size.width * 0.9,
-            color: const Color.fromRGBO(33, 150, 243, 1),
-            child: Row(children: <Widget>[
-              const Icon(
-                Icons.image,
-                size: 100,
-              ),
-              const Text("Some text about product."),
-              const SizedBox(
-                width: 20,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    _increment();
-                  },
-                  child: const Text("+")),
-              ElevatedButton(
-                  onPressed: () {
-                    _decrement();
-                  },
-                  child: const Text("-")),
-              Text('$num'),
-            ]),
-          ),
-          Container(
-            height: size.height * 0.15,
-            width: size.width * 0.9,
-            color: Colors.white,
-            child: Row(children: <Widget>[
-              const Icon(
-                Icons.image,
-                size: 100,
-              ),
-              const Text("Some text about product."),
-              const SizedBox(
-                width: 20,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    _increment();
-                  },
-                  child: const Text("+")),
-              ElevatedButton(
-                  onPressed: () {
-                    _decrement();
-                  },
-                  child: const Text("-")),
-              Text('$num'),
-            ]),
-          ),
-          Container(
-            height: size.height * 0.15,
-            width: size.width * 0.9,
-            color: Colors.green,
-            child: Row(children: <Widget>[
-              const Icon(
-                Icons.image,
-                size: 100,
-              ),
-              const Text("Some text about product."),
-              const SizedBox(
-                width: 20,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    _increment();
-                  },
-                  child: const Text("+")),
-              ElevatedButton(
-                  onPressed: () {
-                    _decrement();
-                  },
-                  child: const Text("-")),
-              Text('$num'),
-            ]),
-          ),
-          Container(
-            height: size.height * 0.15,
-            width: size.width * 0.9,
-            color: Colors.cyanAccent,
-            child: Row(children: <Widget>[
-              const Icon(
-                Icons.image,
-                size: 100,
-              ),
-              const Text("Some text about product."),
-              const SizedBox(
-                width: 20,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    _increment();
-                  },
-                  child: const Text("+")),
-              ElevatedButton(
-                  onPressed: () {
-                    _decrement();
-                  },
-                  child: const Text("-")),
-              Text('$num'),
-            ]),
-          ),
-          Container(
-            margin: const EdgeInsets.all(20),
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              border: Border.all(width: 3, color: Colors.red), 
-              color: Colors.white,
-),
-            child: Row(children: <Widget>[
-              Text(
-                  "Total number of products: $numberOfProducts \nTotal cost: $totalCost")
-            ]),
-          ),
-          ElevatedButton(
-              onPressed: () {
-                _buyPressed(context);
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  fixedSize: Size(
-                    size.width * 0.7,
-                    size.height * 0.05,
-                  ),
-                  shadowColor: Colors.red),
-                  
-              child: const Text("BUY"))
-        ],
-      )),
+        child: Expanded(
+            child: ListView.builder(
+                itemCount: 25,
+                itemBuilder: (BuildContext context, int index) {
+                  return Column(children: [
+                    ListTile(
+                      focusColor: Colors.amber,
+                      tileColor: Colors.white12,
+                      leading: const Icon(Icons.shopping_cart),
+                      title: const Text(
+                        "Product 1",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: const Text(
+                        "Quantity: 1",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      trailing: IconButton(
+                          icon: const Icon(Icons.add),
+                          onPressed: () {
+                            _increment();
+                          }),
+                    )
+                  ]);
+                })
+                ),
+                
+      ),
+    bottomNavigationBar: Padding(padding: EdgeInsets.all(20),
+    child: FloatingActionButton(
+        backgroundColor: Colors.black,
+        child: const Text('Buy', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+        onPressed: () {
+          _buyPressed(context);
+        },
+      ),)
     );
   }
 }
