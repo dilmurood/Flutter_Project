@@ -15,7 +15,7 @@ class Welcome extends StatelessWidget {
   return Scaffold(
     backgroundColor: Colors.white,
     appBar: AppBar(
-      leading: const Icon(Icons.home),
+      leading: const Icon(Icons.home, color: Colors.white,),
         title: const Text('welcome', style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.black,
         actions: [
