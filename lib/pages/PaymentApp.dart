@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/CustomWidgets/CustomTextFormField.dart';
 
 class PaymentApp extends StatefulWidget {
-const PaymentApp({super.key});
-
+  const PaymentApp({super.key});
 
   @override
   State<PaymentApp> createState() => _PaymentAppState();
@@ -11,7 +10,7 @@ const PaymentApp({super.key});
 
 class _PaymentAppState extends State<PaymentApp> {
   final _addressController = TextEditingController();
-  final _promoController = TextEditingController(); 
+  final _promoController = TextEditingController();
   bool isChecked = false;
 
   void _makeDelivery(BuildContext context) {
@@ -27,48 +26,62 @@ class _PaymentAppState extends State<PaymentApp> {
         title: const Text('Payment'),
       ),
       backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CustomTextFormField(controller: _addressController, str: "address", isNotVisible: false,),
+      body:
+          Column(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CustomTextFormField(
+            controller: _addressController,
+            str: "address",
+            isNotVisible: false,
+            icon: Icons.apartment,
+            type: TextInputType.streetAddress,
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CustomTextFormField(controller: _promoController, str: "promo", isNotVisible: true,),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CustomTextFormField(
+            controller: _promoController,
+            str: "promo",
+            isNotVisible: true,
+            icon: Icons.key,
+            type: TextInputType.visiblePassword,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              const SizedBox(
-                width: 20,
-              ),
-              const Text('Do you pay in cash'),
-              const SizedBox(
-                width: 20,
-              ),
-              Checkbox(
-                value: isChecked,
-                onChanged: (bool? value) {
-                  setState(() {
-                    isChecked = value ?? false;
-                  });
-                },
-              )
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          FloatingActionButton(
-              onPressed: () {
-                _makeDelivery(context);
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            const SizedBox(
+              width: 20,
+            ),
+            const Text('Do you pay in cash'),
+            const SizedBox(
+              width: 20,
+            ),
+            Checkbox(
+              value: isChecked,
+              onChanged: (bool? value) {
+                setState(() {
+                  isChecked = value ?? false;
+                });
               },
-              isExtended: true,
-              backgroundColor: Colors.black,
-              child: const Text("Deliver", style: TextStyle(color: Colors.white),)),
-        ]),
+            )
+          ],
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        FloatingActionButton(
+            onPressed: () {
+              _makeDelivery(context);
+            },
+            isExtended: true,
+            backgroundColor: Colors.black,
+            child: const Text(
+              "Deliver",
+              style: TextStyle(color: Colors.white),
+            )),
+      ]),
     );
   }
 }

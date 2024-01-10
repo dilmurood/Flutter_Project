@@ -3,6 +3,18 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
+  // final String fullName;
+  // final String username;
+  // final String password;
+  // final String email;
+  // final String phone;
+  // DatabaseHelper({
+  //     required this.fullName,
+  //     required this.username,
+  //     required this.password,
+  //     required this.email,
+  //     required this.phone});
+
   final databaseName = 'database.db';
 
   String user = '''CREATE table users (
@@ -18,7 +30,7 @@ class DatabaseHelper {
     final databasePath = await getDatabasesPath();
     final path = join(databasePath, databaseName);
 
-    return openDatabase(path, version: 1, onCreate: (db, version) async {
+    return await openDatabase(path, version: 1, onCreate: (db, version) async {
       await db.query(user);
     });
   }
