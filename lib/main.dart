@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_project/firebase_options.dart';
 import 'package:flutter_project/pages/AddItem.dart';
 import 'package:flutter_project/pages/AddItemShow.dart';
 import 'package:flutter_project/pages/Cart.dart';
@@ -8,12 +10,13 @@ import 'package:flutter_project/pages/PaymentApp.dart';
 import 'package:flutter_project/pages/ProfileScreen.dart';
 import 'package:flutter_project/pages/RegisterationScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'pages/LoginScreen.dart';
-import 'pages/Welcome.dart';
 
 int? isViewed;
-void main() async {
+Future<void> main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences pref = await SharedPreferences.getInstance();
   isViewed = pref.getInt('Welcome');
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
         '/PaymentApp': (context) => const PaymentApp(),
         '/ProfileScreen': (context) => const ProfileScreen(),
         '/AddItemShow': (context) => const AddItemShow(),
-        '/RegisterationScreen': (context) => RegistrationScreen(),
+        '/RegisterationScreen': (context) => const RegistrationScreen(),
         '/LoginScreen': (context) => LoginScreen(),
         '/AddItem': (context) => AddItem(),
         '/MainPage': (context) => const MainPage(),
