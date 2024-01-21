@@ -35,7 +35,6 @@ class _PaymentAppState extends State<PaymentApp> {
             str: "address",
             isNotVisible: false,
             icon: Icons.apartment,
-            type: TextInputType.streetAddress,
           ),
         ),
         Padding(
@@ -45,7 +44,6 @@ class _PaymentAppState extends State<PaymentApp> {
             str: "promo",
             isNotVisible: true,
             icon: Icons.key,
-            type: TextInputType.visiblePassword,
           ),
         ),
         Row(

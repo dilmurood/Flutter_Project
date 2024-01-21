@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/CustomWidgets/CustomTextFormField.dart';
-import 'package:flutter_project/DatabaseHelper.dart';
-import 'package:flutter_project/JSON/users.dart';
-import 'package:flutter_project/pages/MainPage.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_project/screens/MainPage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sign_in_button/sign_in_button.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -16,22 +16,19 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  //add TextField Controller
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool isChecked = false;
   bool isLoginCorrect = false;
-
-  final db = DatabaseHelper();
+  User? user;
   Future<void> _sigIn(BuildContext context) async {
     try {
       UserCredential? user = await auth.signInWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );
-
-      if (user != null && _formKey.currentState!.validate()) {
+      if (user != null) {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const MainPage()));
       } else {
@@ -40,6 +37,16 @@ class _LoginScreenState extends State<LoginScreen> {
     } catch (e) {
       print(e);
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    auth.authStateChanges().listen((event) {
+      setState(() {
+        user = event;
+      });
+    });
   }
   // login() async {
   //   var result = await db.login(Users(
@@ -95,10 +102,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       CustomTextFormField(
                         controller: _emailController,
-                        str: 'username',
+                        str: 'email',
                         isNotVisible: false,
-                        icon: Icons.person,
-                        type: TextInputType.name,
+                        icon: Icons.email,
                       ),
                       const SizedBox(height: 16),
                       CustomTextFormField(
@@ -106,18 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         str: 'password',
                         isNotVisible: true,
                         icon: Icons.lock,
-                        type: TextInputType.none,
                       ),
-                      isLoginCorrect
-                          ? Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Text(
-                                'incorrect password or username',
-                                style: TextStyle(color: Colors.red.shade900),
-                              ))
-                          : const SizedBox(
-                              height: 10,
-                            ),
                       Row(
                         children: [
                           const Text(
@@ -138,7 +133,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          _sigIn(context);
+                          if (_formKey.currentState!.validate()) {
+                            _sigIn(context);
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                             fixedSize: const Size(300, 50),
@@ -170,34 +167,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ],
                       ),
-                      const Text('sign up with:',
+                      const Text('sign up Options:',
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold)),
-                      Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            MouseRegion(
-                              cursor: SystemMouseCursors
-                                  .click, // Set the cursor to indicate click
-                              child: GestureDetector(
-                                onTap: _launchURL,
-                                child: Image.asset(
-                                  'images/google.png',
-                                  height: 100,
-                                  width: 100,
-                                ),
-                              ),
-                            ),
-                            Image.asset(
-                              'images/meta.png',
-                              height: 100,
-                              width: 100,
-                            ),
-                          ],
-                        ),
-                      ),
+                      const SizedBox(height: 12.0),
+                      SignInButton(Buttons.googleDark, onPressed: () {
+                        signInWithGoogle();
+                      }),
+                      const SizedBox(height: 12.0),
+                      SignInButton(Buttons.facebook, onPressed: () {}),
+                      const SizedBox(height: 12.0),
+                      SignInButton(Buttons.microsoft, onPressed: () {}),
                     ],
                   ),
                 ),
@@ -208,15 +189,10 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-_launchURL() async {
-  final Uri url = Uri.parse('https://google.com');
+Future<User?> signInWithGoogle() async {
   try {
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+    GoogleAuthProvider _googleAuthProvider = GoogleAuthProvider();
   } catch (e) {
-    throw 'Could not launch $url: $e';
+    print("Error during Google sign-in: $e");
   }
 }

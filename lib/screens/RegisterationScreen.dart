@@ -1,11 +1,10 @@
 // ignore_for_file: file_names
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/CustomWidgets/CustomTextFormField.dart';
-import 'package:flutter_project/DatabaseHelper.dart';
-import 'package:flutter_project/JSON/users.dart';
-import 'package:flutter_project/pages/MainPage.dart';
+import 'package:flutter_project/screens/MainPage.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
@@ -18,33 +17,38 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final _formKey = GlobalKey<FormState>();
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  // final String username;
   final _usernameController = TextEditingController();
 
   final _emailController = TextEditingController();
 
   final _passwordController = TextEditingController();
 
-  final _password2Controller = TextEditingController();
-
   final _phoneController = TextEditingController();
 
-  // final _addressController = TextEditingController();
-  final db = DatabaseHelper();
-Future<void> _signUp() async {
+  final _addressController = TextEditingController();
+
+  Future<void> _signUp() async {
     try {
       UserCredential? user = await auth.createUserWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const MainPage()));
 
-      if (user != null && _formKey.currentState!.validate()) {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) =>
-                const MainPage()));
-      } else {
-        print('Failed to log in with email and password');
-      }
+      //adding to the firestore
+      DocumentReference users = FirebaseFirestore.instance
+          .collection('users')
+          .doc('$_usernameController.text');
+
+      await users.set({
+        "address": _addressController.text,
+        "password": _passwordController.text,
+        "email": _emailController.text,
+        "phoneNumber": _phoneController.text,
+        "username": _usernameController.text
+      });
+
     } catch (e) {
       print(e);
     }
@@ -79,7 +83,6 @@ Future<void> _signUp() async {
                   str: 'username',
                   isNotVisible: false,
                   icon: Icons.person,
-                  type: TextInputType.text,
                 ),
                 const Text(
                   'Email',
@@ -91,7 +94,6 @@ Future<void> _signUp() async {
                   str: 'email',
                   isNotVisible: false,
                   icon: Icons.email,
-                  type: TextInputType.emailAddress,
                 ),
                 const Text(
                   'Password',
@@ -102,18 +104,16 @@ Future<void> _signUp() async {
                   str: 'password',
                   isNotVisible: true,
                   icon: Icons.lock,
-                  type: TextInputType.none,
                 ),
                 const Text(
-                  'Confirm Password',
+                  'Address',
                   style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                 ),
                 CustomTextFormField(
-                  controller: _password2Controller,
-                  str: 'password',
-                  isNotVisible: true,
-                  icon: Icons.lock,
-                  type: TextInputType.none,
+                  controller: _addressController,
+                  str: 'address',
+                  isNotVisible: false,
+                  icon: Icons.location_city,
                 ),
                 const Text(
                   'Phone Number ',
@@ -125,7 +125,6 @@ Future<void> _signUp() async {
                   str: 'phone number',
                   isNotVisible: false,
                   icon: Icons.phone,
-                  type: TextInputType.number,
                 ),
                 const SizedBox(height: 20),
                 Center(
@@ -133,7 +132,10 @@ Future<void> _signUp() async {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
                         fixedSize: const Size(300, 50)),
-                    child: const Text('Register', style: TextStyle(color: Colors.white),),
+                    child: const Text(
+                      'Register',
+                      style: TextStyle(color: Colors.white),
+                    ),
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         _signUp();

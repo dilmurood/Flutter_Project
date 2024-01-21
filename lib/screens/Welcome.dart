@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -6,22 +7,28 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    storedWelcome() async {
+      int isViewed = 0;
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      await pref.setInt('Welcome', isViewed);
+    }
 
-    _storedWelcome() async {
-    int isViewed = 0;
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    await pref.setInt('Welcome', isViewed);
-  }
-  return Scaffold(
-    backgroundColor: Colors.white,
-    appBar: AppBar(
-      leading: const Icon(Icons.home, color: Colors.white,),
-        title: const Text('welcome', style: TextStyle(color: Colors.white),),
-        backgroundColor: Colors.black,
-        actions: [
+    return Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          leading: const Icon(
+            Icons.home,
+            color: Colors.white,
+          ),
+          title: const Text(
+            'welcome',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.black,
+          actions: [
             TextButton(
               onPressed: () {
-                _storedWelcome();
+                storedWelcome();
                 Navigator.pushNamed(context, '/MainPage');
               },
               style: ButtonStyle(
@@ -37,20 +44,23 @@ class Welcome extends StatelessWidget {
             )
           ],
         ),
-        body: const Center(
+        body: Center(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children:  <Widget>[
-              Text(
+                children: <Widget>[
+              const Text(
                 'Welcome to the app',
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-            ]
-        )
-      )
-    );
+              const SizedBox(height: 100,),
+              Image.asset(
+                'images/logo.png',
+                height: 200,
+                width: 200,
+              ),
+            ])));
   }
 }

@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/CustomWidgets/CustomCard.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class ProfileTab extends StatelessWidget {
+  const ProfileTab({super.key});
 
   void _changeScreen(BuildContext context) {
     Navigator.pushNamed(context, '/LoginScreen');
@@ -10,22 +11,22 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Receiving arguments passed from the previous screen
-    final Map<String, dynamic> args =
-        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    // CollectionReference users = FirebaseFirestore.instance.collection('users');
+    // users.doc().get().then((DocumentSnapshot snapshot) {
+    //   if (snapshot.exists) {
+    //     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+    //     print(
+    //         "Full Name: ${data['username']}, Email: ${data['email']}, Phone: ${data['phone']}");
+    //   } else {
+    //     print("Document does not exist");
+    //   }
 
-    // Retrieving data from arguments
-    final String name = args['name'];
-    final String email = args['email'];
-    final String phone = args['phone'];
-    final String password = args['password'];
-
+    //   return print("loading");
+    // });
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black38,
-        leading: BackButton(
-          onPressed: () => Navigator.pushNamed(context, '/MainPage'),
-        ),
+        backgroundColor: Colors.greenAccent,
+        automaticallyImplyLeading: false,
         actions: [
           TextButton(
               //fix edit button
@@ -35,21 +36,23 @@ class ProfileScreen extends StatelessWidget {
                 color: Colors.white,
               )),
         ],
-        title: const Text('Profile'),
+        title: const Text(
+          'Profile',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
-      body: Center(
-          child: Column(children: <Widget>[
-        const Expanded(
-            child: CircleAvatar(
-          radius: 120,
+      body: Column(children: <Widget>[
+        const SizedBox(height: 10),
+        const CircleAvatar(
+          radius: 100,
           backgroundImage: AssetImage('images/ava.png'),
-        )),
-        Text(
-          name,
-          style: const TextStyle(color: Colors.black, fontSize: 25),
         ),
         const Text(
-          "user",
+          "Full Name",
+          style: TextStyle(color: Colors.black, fontSize: 25),
+        ),
+        const Text(
+          "user status",
           style: TextStyle(
               color: Colors.black, fontSize: 15, fontStyle: FontStyle.italic),
         ),
@@ -58,9 +61,9 @@ class ProfileScreen extends StatelessWidget {
           width: 200,
           child: Divider(color: Colors.black),
         ),
-        CustomCard(text: phone, icon: Icons.phone,),
-        CustomCard(text: email, icon: Icons.email),
-        CustomCard(text: password, icon: Icons.password),
+        const CustomCard(text: "phone", icon: Icons.phone),
+        const CustomCard(text: "email", icon: Icons.email),
+        const CustomCard(text: "password", icon: Icons.password),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
           IconButton(
             onPressed: () {
@@ -74,7 +77,7 @@ class ProfileScreen extends StatelessWidget {
         const SizedBox(
           height: 20,
         )
-      ])),
+      ]),
     );
   }
 }

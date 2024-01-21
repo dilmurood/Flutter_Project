@@ -5,7 +5,6 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final bool isNotVisible;
   final IconData icon;
-  final TextInputType type;
 
   const CustomTextFormField({
     super.key,
@@ -13,7 +12,6 @@ class CustomTextFormField extends StatelessWidget {
     required this.str,
     required this.isNotVisible,
     required this.icon,
-    required this.type
   });
 
   @override
@@ -22,7 +20,6 @@ class CustomTextFormField extends StatelessWidget {
         mouseCursor: MaterialStateMouseCursor.clickable,
         controller: controller,
         obscureText: isNotVisible,
-        keyboardType: type,
         
         decoration: InputDecoration(
           prefixIconColor: Colors.black,
