@@ -13,7 +13,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   
-  void _buyPressed(BuildContext context) {
+  void _buyPressed(BuildContext context) { 
     Navigator.pushNamed(context, '/Cart');
   }
 

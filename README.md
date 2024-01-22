@@ -2,13 +2,15 @@
 
 A new Flutter project.
 simple e commerce application (like Uzum).
+The project emphasizes a user-friendly interface with simple login and registration processes. It provides a seamless shopping experience with features like product recommendations, detailed product information, and a secure checkout process. Additionally, business owners can easily add their products to the platform. The implementation involves Flutter for the front-end, and specific functionalities such as authentication, state management, and HTTP requests will be addressed using relevant packages and Flutter best practices. Exception handling is considered to ensure a robust user experience.
 
 Pages:
     -Login
         users just enters USERNAME and PASSWORD, and 
         available options to log in:
             -google
-            -meta(need to change to something else)
+            -facebook
+            -microsoft
 
 
     -Register

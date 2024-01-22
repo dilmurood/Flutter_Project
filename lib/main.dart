@@ -37,8 +37,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'My App',
       themeMode: ThemeMode.dark,
-      //home: isViewed != 0 ? const Welcome() : const MainPage(),
-      home: const LoginScreen(),
+      home: isViewed != 0 ? const Welcome() : const RegistrationScreen(),
       routes: {
         '/PaymentApp': (context) => const PaymentApp(),
         '/ProfileScreen': (context) => const ProfileTab(),

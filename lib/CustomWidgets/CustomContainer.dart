@@ -16,8 +16,8 @@ class _CustomContainerState extends State<CustomContainer> {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ProductDetails()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ProductDetails()));
         },
         child: Container(
             margin: const EdgeInsets.all(8.0),
