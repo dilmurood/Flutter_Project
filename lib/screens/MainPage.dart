@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/screens/tabs/AddItemTab.dart';
 import 'package:flutter_project/screens/tabs/CartTab.dart';
 import 'package:flutter_project/screens/tabs/FilterTab.dart';
 import 'package:flutter_project/screens/tabs/MainTab.dart';
@@ -22,7 +23,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 4,
+        length: 5,
         child: Scaffold(
           backgroundColor: Colors.white,
           body: Column(
@@ -31,6 +32,7 @@ class _MainPageState extends State<MainPage> {
                 child: TabBarView(children: [
                   const MainTab(),
                   FilterTab(),
+                  AddItemTab(),
                   const CartTab(),
                   const ProfileTab(),
                 ]),
@@ -49,6 +51,12 @@ class _MainPageState extends State<MainPage> {
                         Icons.filter_alt,
                       ),
                       text: 'Filter',
+                    ),
+                    Tab(
+                      icon: Icon(
+                        Icons.add,
+                      ),
+                      text: 'Add Item',
                     ),
                     Tab(
                       icon: Icon(

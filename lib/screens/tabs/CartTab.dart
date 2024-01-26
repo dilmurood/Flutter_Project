@@ -41,7 +41,7 @@ class _CartState extends State<CartTab> {
                       child: ListTile(
                         leading: Container(padding: EdgeInsets.all(10), child: Image.asset('images/laptop.png')), 
                         title: const Text("Product Name"),
-                        subtitle: const Text("Price"),
+                        subtitle: const Text("10000\$"),
                         ),
                     ),
                   )
